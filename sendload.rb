@@ -10,6 +10,12 @@ baud_rate = 9600
 data_bits = 8  
 stop_bits = 1  
 parity = SerialPort::NONE
+sp = SerialPort.new(port_str, baud_rate, data_bits, stop_bits, parity)
 
-
-  
+i = 15
+loop do
+  sp.putc(i)
+  puts 'Wrote: %d = %bb' % [ i, i ]
+  i = (i == 15) ? 0 : (i + 1)
+  sleep(10)
+end  
