@@ -15,11 +15,13 @@ sp = SerialPort.new(port_str, baud_rate, data_bits, stop_bits, parity)
 i = 15
 loop do
   f = File.open("/proc/loadavg", "r")
-  loadavg = f.readlines
-  puts f
+  raw = f.gets
+  loadavg = raw.scan(/^.{4}/)[0].to_f
+#  puts f
   puts loadavg
   sp.putc(i)
   puts 'Wrote: %d = %bb' % [ i, i ]
   i = (i == 15) ? 0 : (i + 1)
+  f.close
   sleep(10)
 end  
