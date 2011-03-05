@@ -19,7 +19,7 @@ loop do
   loadavg = raw.scan(/^.{4}/)[0].to_f
 #  puts f
   puts loadavg
-  sp.putc(loadavg)
+  sp.print(loadavg)
   puts 'Wrote: ' + loadavg.to_s
 #  i = (i == 15) ? 0 : (i + 1)
   f.close
