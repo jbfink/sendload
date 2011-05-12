@@ -23,5 +23,5 @@ loop do
   puts 'Wrote: ' + loadavg.to_s
 #  i = (i == 15) ? 0 : (i + 1)
   f.close
-  sleep(3)
+  sleep(1)
 end  
