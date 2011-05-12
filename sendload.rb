@@ -16,7 +16,7 @@ sp = SerialPort.new(port_str, baud_rate, data_bits, stop_bits, parity)
 loop do
   f = File.open("/proc/loadavg", "r")
   raw = f.gets
-  loadavg = raw.scan(/^.{4}/)[0].to_f
+  loadavg = ((raw.scan(/^.{4}/)[0].to_f) * 100).to_i
 #  puts f
   puts loadavg
   sp.print(loadavg)
